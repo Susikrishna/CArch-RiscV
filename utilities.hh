@@ -1,3 +1,6 @@
+#ifndef UTILITIES_GUARD
+#define UTILITIES_GUARD
+
 #include <string>
 #include <vector>
 #include <sstream>
@@ -10,3 +13,5 @@ namespace utilities
     bool checkBase16(std::string s);
     void format(std::string &s);
 }
+
+#endif

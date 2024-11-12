@@ -1,12 +1,17 @@
-CC = g++
+COMPILER = g++
 FLAG = -std=c++17
-Object = riscv_sim
+FINAL = riscv_sim
 
-all: ${Object}
+SOURCEFILES = $(wildcard *.cpp)
+OBJECTFILES = $(SOURCEFILES: .cpp = .o)
 
-%: %.cpp
-	@${CC} ${FLAG} $< -o $@
+all: ${FINAL}
+
+${FINAL}:${OBJECTFILES}
+	$(COMPILER) $(FLAG) $^ -o $@
+
+%.o: %.cpp
+	${COMPILER} ${FLAG} -c $<
 
 clean:
-	@find * -type f | grep -v -e "\." -e "Makefile"| xargs rm 
-	@rm -f *.s
+	@rm -f ${OBJECTFILES} ${FINAL}
